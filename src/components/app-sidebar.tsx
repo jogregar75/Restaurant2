@@ -56,9 +56,9 @@ export function AppSidebar() {
           </div>
           {!collapsed && (
             <div className="min-w-0">
-              <div className="font-bold text-sidebar-foreground truncate">GastroPOS</div>
+              <div className="font-bold text-sidebar-foreground truncate">Faraon</div>
               <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                Restaurant Suite
+                Restaurant
               </div>
             </div>
           )}
