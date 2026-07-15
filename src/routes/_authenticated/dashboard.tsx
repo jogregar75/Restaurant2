@@ -120,7 +120,7 @@ function Dashboard() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <h1 className="text-3xl font-bold">Centro de Control</h1>
         <p className="text-muted-foreground text-sm">
           Panorama operativo del restaurante en tiempo real.
         </p>
