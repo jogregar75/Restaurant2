@@ -70,7 +70,7 @@ function AuthPage() {
             <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center glow-primary">
               <UtensilsCrossed className="w-6 h-6 text-primary" />
             </div>
-            <span className="text-2xl font-bold">GastroPOS</span>
+            <span className="text-2xl font-bold">Faraon</span>
           </div>
           <h1 className="text-4xl font-bold leading-tight mb-4">
             La operación de tu restaurante,{" "}
@@ -96,7 +96,7 @@ function AuthPage() {
             <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
               <UtensilsCrossed className="w-5 h-5 text-primary" />
             </div>
-            <span className="text-xl font-bold">GastroPOS</span>
+            <span className="text-xl font-bold">Faraon</span>
           </div>
 
           <Tabs defaultValue="signin" className="w-full">
