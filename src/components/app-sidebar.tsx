@@ -41,12 +41,18 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  // const { state } = useSidebar();
+  // const { state, setOpenMobile } = useSidebar();
+  const { state, isMobile, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
   const currentPath = useRouterState({ select: (r) => r.location.pathname });
   const isActive = (path: string) =>
     currentPath === path || currentPath.startsWith(path + "/");
-
+  const handleMenuClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
@@ -72,7 +78,8 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
-                    <Link to={item.url} className="flex items-center gap-2">
+                    {/* <Link to={item.url} className="flex items-center gap-2"> */}
+                    <Link to={item.url} onClick={handleMenuClick} className="flex items-center gap-2">
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </Link>

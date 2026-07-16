@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { UtensilsCrossed, Loader2 } from "lucide-react";
+import { UtensilsCrossed, Loader2, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -24,6 +24,8 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showSignInPassword, setShowSignInPassword] = useState(false);
+  const [showSignUpPassword, setShowSignUpPassword] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -118,7 +120,7 @@ function AuthPage() {
                     placeholder="tu@restaurante.com"
                   />
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="si-pass">Contraseña</Label>
                   <Input
                     id="si-pass"
@@ -127,6 +129,32 @@ function AuthPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                </div> */}
+                <div className="space-y-2">
+                  <Label htmlFor="si-pass">Contraseña</Label>
+
+                  <div className="relative">
+                    <Input
+                      id="si-pass"
+                      type={showSignInPassword ? "text" : "password"}
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="pr-10"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowSignInPassword(!showSignInPassword)}
+                      className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground"
+                    >
+                      {showSignInPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
+                    </button>
+                  </div>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading && <Loader2 className="w-4 h-4 animate-spin" />}
@@ -156,7 +184,7 @@ function AuthPage() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="su-pass">Contraseña</Label>
                   <Input
                     id="su-pass"
@@ -166,6 +194,33 @@ function AuthPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                </div> */}
+                <div className="space-y-2">
+                  <Label htmlFor="su-pass">Contraseña</Label>
+
+                  <div className="relative">
+                    <Input
+                      id="su-pass"
+                      type={showSignUpPassword ? "text" : "password"}
+                      required
+                      minLength={6}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="pr-10"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => setShowSignUpPassword(!showSignUpPassword)}
+                      className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground"
+                    >
+                      {showSignUpPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
+                    </button>
+                  </div>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading && <Loader2 className="w-4 h-4 animate-spin" />}
